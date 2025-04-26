@@ -41,10 +41,10 @@ jobs:
     - name: Build all wheels
       run: |
         mkdir dist
-        pip wheel \
-          --wheel-dir dist \
-          --no-cache-dir \
-          --no-binary :all: \
+        pip wheel `
+          --wheel-dir dist `
+          --no-cache-dir `
+          --no-binary :all: `
           -r requirements.txt
     
     - name: Upload artifacts
