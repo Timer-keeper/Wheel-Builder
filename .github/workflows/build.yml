@@ -42,7 +42,7 @@ jobs:
           -r requirements.txt
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: python-wheels-${{ matrix.python-version }}
         path: dist/
