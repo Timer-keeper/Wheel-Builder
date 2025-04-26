@@ -25,7 +25,13 @@ jobs:
     
     - name: Install system libraries
       run: |
-        choco install -y libjpeg-turbo zlib
+        # 更新Chocolatey并安装现代版本库
+        choco upgrade chocolatey -y
+        choco install -y vcpkg --params="'/integrate'"
+        vcpkg install zlib libjpeg-turbo --triplet=x64-windows
+        
+        # 设置环境变量（vcpkg自动集成到MSVC）
+        echo "VCPKG_ROOT=$env:VCPKG_INSTALLATION_ROOT" | Out-File -FilePath $env:GITHUB_ENV -Append
     
     - name: Install build tools
       run: |
